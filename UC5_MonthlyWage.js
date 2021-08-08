@@ -26,7 +26,7 @@ function job_hours(){
 }
 
 const h = job_hours();
-
+ 
 function monthly_wage(){
     return h.emphours * c.rate;
 }
