@@ -35,16 +35,20 @@ function restricted_thours(){
     };  
 }
 
+var res = restricted_thours();
+
 //wage
 function wage(){
 
-    c.empwage = restrict.emphours * c.rate;
+    c.empwage = res.emphours * c.rate;
     return c.empwage;
 }
-var restrict = restricted_thours();
 
 //display
+function display(){
+    console.log("----------Welcome Employee----------")
+    console.log(`Monthly Wage: ${wage()}\nHours worked: ${res.emphours}/${c.maxhours}\nDays worked: ${res.workdays}/${c.maxdays}`)
+}
 
-console.log("----------Welcome Employee----------")
-// console.log("Hours worked: " + restricted_thours() + " and the days worked:" + c.duration_days);
-console.log(`Monthly Wage: ${wage()}\nHours worked: ${restrict.emphours}/${c.maxhours}\nDays worked: ${restrict.workdays}/${c.maxdays}`)
+display();
+
