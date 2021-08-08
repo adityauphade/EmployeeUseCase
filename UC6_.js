@@ -1,12 +1,3 @@
-// let fulltime = 8;
-// let parttime = 4;
-// let rate = 20;
-// let duration_days = 0;
-// let empwage = 0;
-// let emphours = 0;
-// let total = 0;
-
-// variables calling
 let c = require("./const")
 
 //employee hours with restrictive conditions
