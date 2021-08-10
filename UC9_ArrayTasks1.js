@@ -1,3 +1,7 @@
+//forEach
+
+//Reduce
+
 let c = require("./const")
 let attendance_wage = [];
 let attendance_hours = [];
@@ -43,31 +47,31 @@ class Employee{
     }
 
     //monthly wage w/o restrictions
-    monthly_data(){
-        let workdays = 0;
-        let emphours = 0;
-        while (c.duration_days < c.maxdays) {
-            let empshift = Math.floor(Math.random() * 10) % 3
-            switch (empshift) {
-                case 0:
-                    emphours = c.parttime + emphours;
-                    workdays++;
+    // monthly_data(){
+    //     let workdays = 0;
+    //     let emphours = 0;
+    //     while (c.duration_days < c.maxdays) {
+    //         let empshift = Math.floor(Math.random() * 10) % 3
+    //         switch (empshift) {
+    //             case 0:
+    //                 emphours = c.parttime + emphours;
+    //                 workdays++;
                     
-                    break;
-                case 1:
-                    emphours = c.fulltime + emphours;
-                    workdays++;
+    //                 break;
+    //             case 1:
+    //                 emphours = c.fulltime + emphours;
+    //                 workdays++;
                     
-                    break;   
-                default:
-                    break;
-            }
-            c.duration_days++;
-        }
-        const monthly_wage = emphours * c.rate;
-        console.log(`\nTotal days worked by you, ${this.name} are: ${workdays}/${c.maxdays}\nTotal Hours worked by you, ${this.name} are: ${emphours}\nTotal Wage earned by you, ${this.name} is: ${monthly_wage}\n`);
+    //                 break;   
+    //             default:
+    //                 break;
+    //         }
+    //         c.duration_days++;
+    //     }
+    //     const monthly_wage = emphours * c.rate;
+    //     console.log(`\nTotal days worked by you, ${this.name} are: ${workdays}/${c.maxdays}\nTotal Hours worked by you, ${this.name} are: ${emphours}\nTotal Wage earned by you, ${this.name} is: ${monthly_wage}\n`);
         
-    }
+    // }
 
 
     //monthly wage with restrictions w output
@@ -97,7 +101,13 @@ class Employee{
             }
             c.duration_days++;
         }
-        c.empwage = emphours * c.rate;
+        // c.empwage = emphours * c.rate;
+        let sum = 0;
+        attendance_wage.forEach(SumFunction);
+        function SumFunction(item){
+            sum += item;
+        }
+        c.empwage = sum;
         console.log(`\n${this.name}, The Monthly Wage for you with restricted hour limit of ${c.maxhours} hours is: ${c.empwage}\nHours worked by you, ${this.name} are: ${emphours}/${c.maxhours}\nDays worked by you, ${this.name} are: ${workdays}/${c.maxdays}\n`)
         console.log(`The Daily Wage: ${attendance_wage}`);
         console.log(`The Daily Hours: ${attendance_hours}`);
@@ -105,9 +115,7 @@ class Employee{
 
     //display welcome
     welcome(){
-        console.log(`---------- WELCOME TO THE EMPLOYEE HUB: ${this.name} ----------\n`)
-        console.log()
-    }
+        console.log(`---------- WELCOME TO THE EMPLOYEE HUB: ${this.name} ----------\n`)    }
 
 }
 
@@ -115,5 +123,5 @@ const emp1 = new Employee("Ganya");
 emp1.welcome();
 emp1.employee_check();
 emp1.employee_shift();
-emp1.monthly_data();
+// emp1.monthly_data();
 emp1.monthly_restrictedhours_data();
